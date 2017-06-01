@@ -1,0 +1,27 @@
+{
+    "name": "uccu/JoinSql",
+    "description": "Sql engine with join",
+    "keywords": ["sql","mysql"],
+    "homepage": "https://github.com/uccu/tanime",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "pzcat",
+            "email": "cat@4moe.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "uccu\\JoinSql\\": "src"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
