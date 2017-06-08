@@ -14,7 +14,8 @@ class Handle {
     private $_linked = false;
 
     public $lastSql;
-    public $prefix = '';
+    public $defaultPrefix = '';
+    public $defaultDatabase;
 
     # 设置数据库服务类型与参数
     public function setServer(String $serverName,array $config){
@@ -23,7 +24,7 @@ class Handle {
         $this->_server = new $serverClass;
         $this->_server->initConfig($config);
         $this->defaultPrefix = $this->_server->prefix;
-        $this->defalutDatabase = $this->_server->database;
+        $this->defaultDatabase = $this->_server->database;
         return $this;
     }
 

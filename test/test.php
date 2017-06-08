@@ -4,7 +4,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 
 use uccu\JoinSql\Sql\Handle;
-
+use uccu\JoinSql\Sql\Model;
 $config = [
     'host'=>'127.0.0.1',
     'user'=>'root',
@@ -17,10 +17,17 @@ $server->setServer('PdoMysql',$config);
 $server->connect();
 
 
-$server->query('select count(*),1 from cache');
+// $server->query('select id from cache');
 
-$data = $server->groupData('id');
+// $data = $server->getData('id');
 
-var_dump($data);
+// var_dump($data);
 
-echo $server->getRows();
+// echo $server->getRows();
+
+$model = new Model('cache');
+
+foreach($model as $k=>$v){
+    echo $k;
+    echo "\n";
+}

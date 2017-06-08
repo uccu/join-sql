@@ -29,7 +29,7 @@ Trait ModelConfigure{
 
         if(!$offset)return $this;
         $offset<0 && $offset = 0;
-        $this->offset = $offset;
+        $this->_limit = $offset;
         return $this;
 
     }
@@ -37,13 +37,13 @@ Trait ModelConfigure{
 
         if(!$limit)return $this;
         $limit<1 && $limit = 1;
-        $this->limit = $limit;
+        $this->_limit = $limit;
         return $this;
 
     }
     public function page(int $page = 1,int $count = null){
         
-        $count = $this->limit($count)->limit;
+        $count = $this->limit($count)->_limit;
 
         if($count){
 

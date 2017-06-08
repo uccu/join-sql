@@ -1,4 +1,4 @@
-# JoinSql
+# join-sql
 Sql engine with join
 
 

@@ -8,14 +8,19 @@ Trait ModelSet{
 
     protected function setTable(Table $table){
 
-        $this->_var->table = $table;
-        $this->_var->table = $table;
-    }
-    protected function setPrefix(string $prefix){
+        $this->_table = $table;
 
-        $this->_var->prefix = $prefix;
     }
 
+
+    protected function setColumns(){
+
+        $this->_fun->handle->query('SHOW FULL COLUMNS FROM '.$this->_table->name);
+        $this->_fun->handle->getData();
+
+
+        return $this;
+    }
 
 
 

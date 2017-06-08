@@ -3,6 +3,8 @@ namespace uccu\JoinSql\Sql;
 
 use uccu\JoinSql\Base;
 use uccu\JoinSql\Traits;
+use stdClass;
+
 class Model extends Base\Model {
 
     use Traits\InstanceTrait;
@@ -11,7 +13,7 @@ class Model extends Base\Model {
 
     function __construct($tableName = null){
 
-        if(!$tableName)$tableName = $this->_table;
+        if(!$tableName)$tableName = $this->_tableName;
 
         $this->_var = new stdClass;
         $this->_fun = new stdClass;
@@ -25,12 +27,15 @@ class Model extends Base\Model {
 
         $table = Table::getMutiInstance($tableName,$database);
 
-        $this->seTtable($table);
+        $this->setTable($table);
 
     }
     
 
+    function init(){
 
+
+    }
 
 
 

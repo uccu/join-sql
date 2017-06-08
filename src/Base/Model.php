@@ -7,6 +7,7 @@ abstract class Model{
 
     use Traits\ModelConfigure;
     use Traits\ModelAction;
+    use Traits\ModelSet;
     
     # 设置
     abstract public function init();

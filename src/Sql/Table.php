@@ -1,8 +1,11 @@
 <?php
 namespace uccu\JoinSql\Sql;
 
+use uccu\JoinSql\Traits;
 
 class Table {
+
+    use Traits\InstanceTrait;
 
     public $database;
 
