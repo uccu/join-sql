@@ -12,10 +12,11 @@ class PdoMysql implements Server {
     
 	use Traits\InstanceTrait;
 
-	public $prefix;
+	
 	public $database;
-	private $_connection;
 
+	private $_connection;
+	private $_prefix;
 	private $_config;
 	private $_results;
 	private $_effectsNumber = 0;
@@ -25,7 +26,7 @@ class PdoMysql implements Server {
 
 		$this->_config = [
             'database'      =>  'test',
-            'host'          =>  'root',
+            'host'          =>  'localhost',
             'charset'       =>  'utf8mb4',
             'user'          =>  'root',
             'password'      =>  '',
@@ -48,7 +49,7 @@ class PdoMysql implements Server {
     # 获取prefix
     public function getPrefix(){
 
-        return $this->_prefix;
+        return $this->_prefix ? $this->_prefix : '';
     }
 	
     # 设置配置
@@ -183,7 +184,7 @@ class PdoMysql implements Server {
     
 
 	# 关闭游标，使语句能再次被执行
-	function free_result(){
+	function freeResult(){
 		if(!$this->_results)return false;
 		return $this->_results->closeCursor();
 	}

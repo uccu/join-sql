@@ -23,7 +23,7 @@ class Handle {
         $serverClass = 'uccu\JoinSql\Server\\'.$serverName;
         $this->_server = new $serverClass;
         $this->_server->initConfig($config);
-        $this->defaultPrefix = $this->_server->prefix;
+        $this->defaultPrefix = $this->_server->getPrefix();
         $this->defaultDatabase = $this->_server->database;
         return $this;
     }
