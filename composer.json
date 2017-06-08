@@ -2,7 +2,7 @@
     "name": "uccu/join-sql",
     "description": "Sql engine with join",
     "keywords": ["sql","mysql"],
-    "homepage": "https://github.com/uccu/tanime",
+    "homepage": "https://github.com/uccu/join-sql",
     "license": "MIT",
     "authors": [
         {

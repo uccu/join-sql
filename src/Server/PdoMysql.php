@@ -90,7 +90,7 @@ class PdoMysql implements Server {
 			]
 		);
 
-		if(!$this->_connection)throw new Expection('数据库连接失败');
+		if(!$this->_connection)throw new Expection('connect failed');
 
 
 		return $this;
@@ -109,7 +109,11 @@ class PdoMysql implements Server {
 	# 执行sql语句并返回PDOStatement的实例
 	function query(String $sql){
 
-		$this->setResults($this->_connection->query($sql));
+		$result = $this->_connection->query($sql);
+
+		if(!$result)throw new Exception('sql error');
+
+		$this->setResults($result);
 		return $this;
 	}
 

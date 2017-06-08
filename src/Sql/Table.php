@@ -29,6 +29,10 @@ class Table {
 
     }
     
+    function __toString(){
+
+        return $this->sqlName;
+    }
     
 
 

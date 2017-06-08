@@ -5,9 +5,7 @@ use uccu\JoinSql\Sql;
 
 Trait ModelAction{
 
-    protected $_select;
-    protected $_fields;
-    protected $_conditions;
+    
     
     public $lastSql;
 
@@ -16,23 +14,25 @@ Trait ModelAction{
         !$this->_select && $this->_select = new Sql\Select();
 
     }
+
+    
+    public function query(){
+
+        
+    }
     
     public function get(){
 
-        $this->handleActionIfNull();
+        $this->handleGetActionIfNull();
 
-        $sql = 'SELECT '.$this->_select . ' FROM '.$this->_table ;
+        $sql = 'SELECT ' . $this->_select . ' FROM '.$this->_table ;
 
-        if(!$this->_query){
 
-            $this->_conditions  && $sql .= ' '.$this->_conditions;
-            $this->_group       && $sql .= ' '.$this->_group;
-            $this->_order       && $sql .= ' '.$this->_order;
-            $this->_limit       && $sql .= ' '.$this->_limit;
-            $this->_offset      && $sql .= ' '.$this->_offset;
-
-        }else $sql .= ' '.$this->_query;
-        
+        $this->_conditions  && $sql .= ' WHERE '.$this->_conditions;
+        $this->_group       && $sql .= ' GROUP BY '.$this->_group;
+        $this->_order       && $sql .= ' ORDER BY '.$this->_order;
+        $this->_limit       && $sql .= ' LIMIT '.$this->_limit;
+        $this->_offset      && $sql .= ' OFFSET '.$this->_offset;
 
 
         $this->lastSql = $sql;
@@ -57,7 +57,7 @@ Trait ModelAction{
 
         }
 
-        return $this->get()->find(0);
+        return $this->get()->index(0);
     }
     public function save(){
 

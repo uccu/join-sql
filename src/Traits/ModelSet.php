@@ -13,12 +13,12 @@ Trait ModelSet{
     }
 
 
-    protected function setColumns(){
+    /*protected*/ function setColumns(){
 
         $this->_fun->handle->query('SHOW FULL COLUMNS FROM '.$this->_table->name);
-        $this->_fun->handle->getData();
+        $data = $this->_fun->handle->getData('Field');
 
-
+        var_dump($data);
         return $this;
     }
 
