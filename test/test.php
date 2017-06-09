@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__.'/../vendor/autoload.php';
-
+require_once 'CacheModel.php';
 
 use uccu\JoinSql\Sql\Handle;
 use uccu\JoinSql\Sql\Model;
@@ -10,6 +10,7 @@ $config = [
     'user'=>'root',
     'password'=>'123',
     'database'=>'test',
+    'prefix'=>'s_',
     'errMode'=>2
 ];
 
@@ -26,7 +27,7 @@ $server->connect();
 
 // echo $server->getRows();
 
-$model = new Model('user');
+$model = CacheModel::getSingleInstance();
 
-$model->get();
+$model->select('id','des')->group('id')->order('id')->page(2,2)->get();
 echo $model->lastSql;

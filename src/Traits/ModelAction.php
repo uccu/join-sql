@@ -4,8 +4,6 @@ namespace uccu\JoinSql\Traits;
 use uccu\JoinSql\Sql;
 
 Trait ModelAction{
-
-    
     
     public $lastSql;
 
@@ -51,7 +49,7 @@ Trait ModelAction{
 
             $field = new Sql\Field($this->primaryField,$this);
 
-            $this->where = '';
+            $this->_where = null;
 
             $this->where([$this->primary=>$id]);
 

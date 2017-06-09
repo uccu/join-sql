@@ -9,7 +9,7 @@ class RowArray implements ArrayAccess{
 
     function __toString(){
 
-        return json_encode($_rows);
+        return json_encode($this->_rows);
     }
 
     function offsetExists ($offset){

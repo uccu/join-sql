@@ -56,7 +56,7 @@ class PdoMysql implements Server {
     public function initConfig(array $array){
 
         $this->_config = array_merge($this->_config,$array);
-        $this->prefix = $this->_config['prefix'];
+        $this->_prefix = $this->_config['prefix'];
         $this->database = $this->_config['database'];
         return $this;
     }

@@ -12,9 +12,10 @@ abstract class Model{
     use Traits\ModelSet;
     use Traits\InstanceTrait;
 
-    private $_var;
-    private $_fun;
-    private $_table;
+    protected $_var;
+    protected $_fun;
+    protected $_tableName;
+    
 
     function __construct($tableName = null){
 
@@ -34,9 +35,11 @@ abstract class Model{
 
         $this->setTable($table);
 
+        $this->init();
+
     }
     # 设置
-    abstract public function init();
-
+    abstract protected function init();
+    
     
 }

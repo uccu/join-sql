@@ -5,9 +5,10 @@ use uccu\JoinSql\Sql\Table;
 
 Trait ModelSet{
 
+    protected $_table;
 
     protected function setTable(Table $table){
-
+        
         $this->_table = $table;
 
     }
@@ -22,6 +23,10 @@ Trait ModelSet{
         return $this;
     }
 
+    protected function setJoinField(string $field = null){
 
+        
+
+    }
 
 }

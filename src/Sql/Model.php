@@ -10,11 +10,12 @@ class Model extends Base\Model {
     
     
 
-    function init(){
+    protected function init(){
 
 
     }
 
+    
 
 
 

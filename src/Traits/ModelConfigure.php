@@ -16,46 +16,66 @@ Trait ModelConfigure{
 
     public function select(){
 
+        $container = func_get_args();
 
+        foreach($container as $k=>$field){
+            
+            @list($field,$fas) = explode('>',$field);
+
+            $select[] = Sql\Handle::quoteField($field);
+
+
+        }
+
+        $this->_select = implode(', ' ,$select);
+
+        return $this;
     }
 
-    public function group(){
+    public function group($field = null){
 
+        if(!$field)return $this;
+
+        $field = Sql\Handle::quoteField($field);
+        $this->_group = $field;
+        return $this;
     }
 
-    public function order(){
+    public function order($fiel = null,$desc = null){
 
         $container = func_get_args();
 
         $count = count($container);
         if(!$count)return $this;
 
-        if($count === 2){
+        is_string($desc) && $desc = strtoupper($isDesc);
 
-            !$container[1] && $container[1] = 'ASC';
-            $desc = strtoupper($container[1]);
+        if($desc === 'RAW'){
 
-            if($desc==='RAW'){
+            $this->_order = $fiel;return $this;
 
-                $this->_order = $container[0];return $this;
-                return $this;
-            }elseif(in_array($desc,['DESC','ASC','desc','asc']) || is_numeric($desc) || is_bool($desc)){
+        }elseif(in_array($desc,['DESC','ASC']) || is_numeric($desc) || is_bool($desc)){
 
                 $desc && $desc !== 'ASC' && $container[0] .= ' DESC';
                 unset($container[1]);
-            }
-
+            
         }
 
 
-        $orders = array();
+        $orders = [];
+
         foreach($container as $k=>$field){
-            if(is_numeric($k))@list($field,$desc) = explode(' ',$field);
-            else break;
+            
+            @list($field,$desc) = explode(' ',$field);
+
             $field = Sql\Handle::quoteField($field);
+
             $orders[] = $field.' '. (strtoupper($desc) !=='DESC' ? 'ASC' : 'DESC');
+
         }
+
         $this->_order = implode(', ' ,$orders);
+
         return $this;
         
     }

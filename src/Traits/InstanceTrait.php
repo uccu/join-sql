@@ -9,7 +9,7 @@ Trait InstanceTrait{
 		if(empty($object)){
 
             $params = func_get_args();
-            $object = new self(...$params);
+            $object = new static(...$params);
         }
 		return $object;
     }
@@ -20,7 +20,7 @@ Trait InstanceTrait{
 		if(empty($object) && !isset($object[$type])){
 
             $params = func_get_args();
-            $object[$type] = new self(...$params);
+            $object[$type] = new static(...$params);
         }
 		return $object[$type];
     }
@@ -28,7 +28,7 @@ Trait InstanceTrait{
     public static function copyMutiInstance(string $type){
 
         $params = func_get_args();
-        $obj = clone self::getMutiInstance(...$params);
+        $obj = clone static::getMutiInstance(...$params);
 		return $obj;
     }
 

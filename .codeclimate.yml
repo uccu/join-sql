@@ -6,3 +6,5 @@ engines:
                 enabled: false
             CleanCode/StaticAccess:
                 enabled: false
+            Design/TooManyPublicMethods:
+                enabled: false
